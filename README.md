@@ -176,7 +176,27 @@ Several regression models were compared:
 
 \## Final Model
 
+## Model Performance
 
+The Random Forest model achieved strong performance on the held-out 2021–2022 test period:
+
+- **MAE:** 0.124 mm
+- **RMSE:** 0.241 mm
+- **R²:** 0.985
+
+### Actual vs Predicted
+
+The following plot compares the model predictions with the actual irrigation requirements.
+
+![Actual vs Predicted](images/actual_vs_predicted.png)
+
+### Feature Importance
+
+Feature importance analysis shows which variables contributed most to the Random Forest predictions.
+
+![Random Forest Feature Importance](images/feature_importance.png)
+
+Precipitation was the most influential feature, followed by temperature-related variables, ET0, seasonal information, and water demand.
 
 The final model selected was a Random Forest Regressor.
 
