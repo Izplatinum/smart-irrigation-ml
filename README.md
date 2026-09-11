@@ -305,6 +305,11 @@ Data Science Model
 
 The Docker image is stored in Amazon Elastic Container Registry and deployed on an EC2 instance.
 
+### Architecture Diagram
+
+![Smart Irrigation AWS Architecture](images/architecture.png)
+
+> **Note:** The current deployed architecture uses FastAPI → Docker → Amazon ECR → Amazon EC2 → Public API. The diagram also presents the planned production architecture, including API Gateway, S3, Lambda, SageMaker, RDS, QuickSight, monitoring, and farmer notifications.
 \## API Endpoint
 
 
