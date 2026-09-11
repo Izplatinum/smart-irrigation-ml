@@ -292,7 +292,18 @@ Data Science Model
 
 The Docker image is stored in Amazon Elastic Container Registry and deployed on an EC2 instance.
 
+## AWS Architecture
 
+The deployment architecture is:
+
+Data Science Model  
+→ FastAPI  
+→ Docker  
+→ Amazon ECR  
+→ Amazon EC2  
+→ Public REST API
+
+The Docker image is stored in Amazon Elastic Container Registry and deployed on an EC2 instance.
 
 \## API Endpoint
 
