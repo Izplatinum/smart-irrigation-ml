@@ -37,7 +37,14 @@ The project covers the full Data Science and Machine Learning lifecycle:
 
 
 \## Dataset
+## Data Source
 
+The project uses the supplementary raw dataset from the scientific study:
+
+**An accurate irrigation volume prediction method based on an optimized LSTM model**  
+PeerJ Computer Science, 2024.
+
+The dataset contains historical meteorological and irrigation observations from 2000 to 2022.
 
 
 The project uses a scientific irrigation dataset containing historical meteorological and irrigation-related observations from 2000 to 2022.
@@ -330,11 +337,39 @@ The Docker image is stored in Amazon Elastic Container Registry and deployed on 
 ![Smart Irrigation AWS Architecture](images/architecture.png)
 
 > **Note:** The current deployed architecture uses FastAPI → Docker → Amazon ECR → Amazon EC2 → Public API. The diagram also presents the planned production architecture, including API Gateway, S3, Lambda, SageMaker, RDS, QuickSight, monitoring, and farmer notifications.
-\## API Endpoint
+
+## How to Run the API Locally
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Start the FastAPI server
+
+```bash
+python -m uvicorn app:app --reload
+```
+
+### 3. Open Swagger UI
+
+Open the following address in your browser:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### 4. Run with Docker
+
+```bash
+docker build -t smart-irrigation-api .
+docker run -p 8000:8000 smart-irrigation-api
+```
+## API Endpoint
 
 
-
-\### POST /predict
+### POST /predict
 
 
 
@@ -345,28 +380,16 @@ Example input:
 ```json
 
 {
-
-&#x20; "date": "2021-05-01",
-
-&#x20; "air\_pressure\_hpa": 987.62,
-
-&#x20; "average\_temperature\_c": 9.33,
-
-&#x20; "maximum\_temperature\_c": 15.26,
-
-&#x20; "minimum\_temperature\_c": 2.72,
-
-&#x20; "precipitation\_mm": 0,
-
-&#x20; "relative\_humidity\_pct": 57.42,
-
-&#x20; "wind\_velocity\_ms": 2.76,
-
-&#x20; "sunshine\_hours": 6.29,
-
-&#x20; "et0": 3.2,
-
-&#x20; "water\_demand": 1.344
-
+  "date": "2021-05-01",
+  "air_pressure_hpa": 987.62,
+  "average_temperature_c": 9.33,
+  "maximum_temperature_c": 15.26,
+  "minimum_temperature_c": 2.72,
+  "precipitation_mm": 0,
+  "relative_humidity_pct": 57.42,
+  "wind_velocity_ms": 2.76,
+  "sunshine_hours": 6.29,
+  "et0": 3.2,
+  "water_demand": 1.344
 }
-
+```
