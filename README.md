@@ -13,6 +13,7 @@ The project covers the full Data Science and Machine Learning lifecycle:
 - Time-based validation
 - Machine Learning model development
 - Model evaluation
+- Power BI visualization
 - API development
 - Docker containerization
 - AWS cloud deployment
@@ -124,9 +125,38 @@ Average results:
 
 This provides additional evidence that the model generalizes well across different time periods within the dataset.
 
+## Power BI Dashboard
+
+A Power BI dashboard was developed to transform the Machine Learning results into interactive and actionable irrigation insights.
+
+The dashboard provides:
+
+- Average recommended irrigation
+- Average predicted irrigation
+- Mean Absolute Error (MAE)
+- Recommended vs predicted irrigation analysis
+- Irrigation trends over time
+- Precipitation vs recommended irrigation
+- ET0 vs recommended irrigation
+- Interactive date filtering
+
+Key dashboard indicators for the 2021–2022 test period include:
+
+- **Average Recommended Irrigation:** 2.21 mm
+- **Average Predicted Irrigation:** 2.23 mm
+- **Mean Absolute Error:** 0.12 mm
+
+### Dashboard Preview
+
+![Power BI Smart Irrigation Dashboard](images/powerbi_dashboard.png)
+
+The interactive Power BI report is available in the repository as:
+
+`smart_irrigation_dashboard.pbix`
+
 ## Model Deployment
 
-The trained model was serialized using Joblib.
+The trained Random Forest model was serialized using Joblib.
 
 A FastAPI application was created to expose the prediction model through a REST API.
 
@@ -153,7 +183,7 @@ The current deployment architecture is:
 
 **Data Science Model → FastAPI → Docker → Amazon ECR → Amazon EC2 → Public REST API**
 
-The Docker image is stored in Amazon Elastic Container Registry and deployed on an Amazon EC2 instance.
+The Docker image is stored in Amazon Elastic Container Registry (ECR) and deployed on an Amazon EC2 instance.
 
 ### Architecture Diagram
 
@@ -163,13 +193,13 @@ The Docker image is stored in Amazon Elastic Container Registry and deployed on 
 
 ## How to Run the API Locally
 
-### 1. Install dependencies
+### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Start the FastAPI server
+### 2. Start the FastAPI Server
 
 ```bash
 python -m uvicorn app:app --reload
@@ -223,24 +253,39 @@ Example response:
 
 ## Technology Stack
 
+### Data Science & Machine Learning
+
 - Python
 - Pandas
 - NumPy
 - Scikit-learn
 - Matplotlib
+
+### Business Intelligence
+
+- Power BI
+
+### API & Deployment
+
 - FastAPI
 - Uvicorn
+- Joblib
 - Docker
-- Git
-- GitHub
+
+### Cloud
+
 - AWS ECR
 - AWS EC2
 - AWS IAM
 - AWS Systems Manager
 
+### Development & Version Control
+
+- Git
+- GitHub
+
 ## Future Improvements
 
-- Power BI or Tableau dashboard
 - Real-time weather API integration
 - Soil-moisture sensors
 - IoT integration
@@ -249,8 +294,11 @@ Example response:
 - Cloud monitoring
 - HTTPS and custom domain
 - CI/CD pipeline
+- Database integration
 - Field validation with real farm data
 
 ## Project Goal
 
-This project demonstrates the ability to design, develop, validate, deploy, and expose an end-to-end Machine Learning system for smart agriculture.
+This project demonstrates the ability to design, develop, validate, visualize, deploy, and expose an end-to-end Machine Learning system for smart agriculture.
+
+It combines Data Science, Machine Learning, Business Intelligence, REST API development, Docker containerization, cloud deployment, and version control in a single end-to-end project.
